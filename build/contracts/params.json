@@ -1,0 +1,725 @@
+{
+  "contractName": "params",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/FogNodeManagement.sol\":\"params\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/FogNodeManagement.sol\":{\"keccak256\":\"0x977f1fb7b05a6d01db4155fb5a661da82105de4f2141538cdc8d8acb03f4e0d7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9be65335183c13cba68bc56b933e72910eae7c9bec648ed94b6c1c21408d1b1f\",\"dweb:/ipfs/QmdTXT9u8NLjLJzHX2rjo5XKK1xffED1HgTekq9aJeGfdy\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "//SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ninterface params {\r\n    struct FogNode {\r\n        address owner;\r\n        string ip;\r\n        string location;\r\n        uint processingCapability;\r\n    }\r\n}\r\n\r\ncontract FogNodeManagement is params{\r\n\r\n    mapping(address => FogNode) public fogNodes;\r\n    function givefogNodes(address _address) public view returns (FogNode memory) {\r\n        return fogNodes[_address];\r\n    }\r\n    function registerFogNode(string memory ip, string memory location, uint processingCapability) public {\r\n        fogNodes[msg.sender] = FogNode(msg.sender, ip, location, processingCapability);\r\n    }\r\n\r\n}",
+  "sourcePath": "C:\\Users\\Kartik\\OneDrive\\Desktop\\cs540\\project\\contracts\\FogNodeManagement.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/FogNodeManagement.sol",
+    "exportedSymbols": {
+      "FogNodeManagement": [
+        154
+      ],
+      "params": [
+        110
+      ]
+    },
+    "id": 155,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 100,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "params",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": true,
+        "id": 110,
+        "linearizedBaseContracts": [
+          110
+        ],
+        "name": "params",
+        "nameLocation": "69:6:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "params.FogNode",
+            "id": 109,
+            "members": [
+              {
+                "constant": false,
+                "id": 102,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "117:5:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 109,
+                "src": "109:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 101,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "109:7:3",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 104,
+                "mutability": "mutable",
+                "name": "ip",
+                "nameLocation": "140:2:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 109,
+                "src": "133:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 103,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "133:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 106,
+                "mutability": "mutable",
+                "name": "location",
+                "nameLocation": "160:8:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 109,
+                "src": "153:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 105,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 108,
+                "mutability": "mutable",
+                "name": "processingCapability",
+                "nameLocation": "184:20:3",
+                "nodeType": "VariableDeclaration",
+                "scope": 109,
+                "src": "179:25:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 107,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "179:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "FogNode",
+            "nameLocation": "90:7:3",
+            "nodeType": "StructDefinition",
+            "scope": 110,
+            "src": "83:129:3",
+            "visibility": "public"
+          }
+        ],
+        "scope": 155,
+        "src": "59:156:3",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 111,
+              "name": "params",
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 110,
+              "src": "249:6:3"
+            },
+            "id": 112,
+            "nodeType": "InheritanceSpecifier",
+            "src": "249:6:3"
+          }
+        ],
+        "canonicalName": "FogNodeManagement",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 154,
+        "linearizedBaseContracts": [
+          154,
+          110
+        ],
+        "name": "FogNodeManagement",
+        "nameLocation": "228:17:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "0a2d518a",
+            "id": 117,
+            "mutability": "mutable",
+            "name": "fogNodes",
+            "nameLocation": "299:8:3",
+            "nodeType": "VariableDeclaration",
+            "scope": 154,
+            "src": "264:43:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$109_storage_$",
+              "typeString": "mapping(address => struct params.FogNode)"
+            },
+            "typeName": {
+              "id": 116,
+              "keyType": {
+                "id": 113,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "272:7:3",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "264:27:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$109_storage_$",
+                "typeString": "mapping(address => struct params.FogNode)"
+              },
+              "valueType": {
+                "id": 115,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 114,
+                  "name": "FogNode",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 109,
+                  "src": "283:7:3"
+                },
+                "referencedDeclaration": 109,
+                "src": "283:7:3",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_FogNode_$109_storage_ptr",
+                  "typeString": "struct params.FogNode"
+                }
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 129,
+              "nodeType": "Block",
+              "src": "391:44:3",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 125,
+                      "name": "fogNodes",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 117,
+                      "src": "409:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$109_storage_$",
+                        "typeString": "mapping(address => struct params.FogNode storage ref)"
+                      }
+                    },
+                    "id": 127,
+                    "indexExpression": {
+                      "id": 126,
+                      "name": "_address",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 119,
+                      "src": "418:8:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "409:18:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FogNode_$109_storage",
+                      "typeString": "struct params.FogNode storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 124,
+                  "id": 128,
+                  "nodeType": "Return",
+                  "src": "402:25:3"
+                }
+              ]
+            },
+            "functionSelector": "a96fadc5",
+            "id": 130,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "givefogNodes",
+            "nameLocation": "323:12:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 120,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 119,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "344:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 130,
+                  "src": "336:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 118,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "335:18:3"
+            },
+            "returnParameters": {
+              "id": 124,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 123,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 130,
+                  "src": "375:14:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FogNode_$109_memory_ptr",
+                    "typeString": "struct params.FogNode"
+                  },
+                  "typeName": {
+                    "id": 122,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 121,
+                      "name": "FogNode",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 109,
+                      "src": "375:7:3"
+                    },
+                    "referencedDeclaration": 109,
+                    "src": "375:7:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FogNode_$109_storage_ptr",
+                      "typeString": "struct params.FogNode"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "374:16:3"
+            },
+            "scope": 154,
+            "src": "314:121:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 152,
+              "nodeType": "Block",
+              "src": "542:97:3",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 150,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 139,
+                        "name": "fogNodes",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 117,
+                        "src": "553:8:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$109_storage_$",
+                          "typeString": "mapping(address => struct params.FogNode storage ref)"
+                        }
+                      },
+                      "id": 142,
+                      "indexExpression": {
+                        "expression": {
+                          "id": 140,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "562:3:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 141,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "562:10:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "553:20:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_FogNode_$109_storage",
+                        "typeString": "struct params.FogNode storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "arguments": [
+                        {
+                          "expression": {
+                            "id": 144,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 4294967281,
+                            "src": "584:3:3",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 145,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "584:10:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "id": 146,
+                          "name": "ip",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 132,
+                          "src": "596:2:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "id": 147,
+                          "name": "location",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 134,
+                          "src": "600:8:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "id": 148,
+                          "name": "processingCapability",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 136,
+                          "src": "610:20:3",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 143,
+                        "name": "FogNode",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 109,
+                        "src": "576:7:3",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_FogNode_$109_storage_ptr_$",
+                          "typeString": "type(struct params.FogNode storage pointer)"
+                        }
+                      },
+                      "id": 149,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "576:55:3",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_FogNode_$109_memory_ptr",
+                        "typeString": "struct params.FogNode memory"
+                      }
+                    },
+                    "src": "553:78:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FogNode_$109_storage",
+                      "typeString": "struct params.FogNode storage ref"
+                    }
+                  },
+                  "id": 151,
+                  "nodeType": "ExpressionStatement",
+                  "src": "553:78:3"
+                }
+              ]
+            },
+            "functionSelector": "acc93789",
+            "id": 153,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerFogNode",
+            "nameLocation": "450:15:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 137,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 132,
+                  "mutability": "mutable",
+                  "name": "ip",
+                  "nameLocation": "480:2:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 153,
+                  "src": "466:16:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 131,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "466:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 134,
+                  "mutability": "mutable",
+                  "name": "location",
+                  "nameLocation": "498:8:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 153,
+                  "src": "484:22:3",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 133,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "484:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 136,
+                  "mutability": "mutable",
+                  "name": "processingCapability",
+                  "nameLocation": "513:20:3",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 153,
+                  "src": "508:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 135,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "508:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "465:69:3"
+            },
+            "returnParameters": {
+              "id": 138,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "542:0:3"
+            },
+            "scope": 154,
+            "src": "441:198:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 155,
+        "src": "219:425:3",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:612:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2023-11-19T10:17:45.015Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
