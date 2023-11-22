@@ -5048,7 +5048,7 @@
                 }
               ]
             },
-            "name": "abi_encode_t_struct$_FogNode_$248_memory_ptr_to_t_struct$_FogNode_$248_memory_ptr_fromStack",
+            "name": "abi_encode_t_struct$_FogNode_$268_memory_ptr_to_t_struct$_FogNode_$268_memory_ptr_fromStack",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -5189,7 +5189,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "abi_encode_t_struct$_FogNode_$248_memory_ptr_to_t_struct$_FogNode_$248_memory_ptr_fromStack",
+                      "name": "abi_encode_t_struct$_FogNode_$268_memory_ptr_to_t_struct$_FogNode_$268_memory_ptr_fromStack",
                       "nodeType": "YulIdentifier",
                       "src": "9576:91:3"
                     },
@@ -5206,7 +5206,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_FogNode_$248_memory_ptr__to_t_struct$_FogNode_$248_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_FogNode_$268_memory_ptr__to_t_struct$_FogNode_$268_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -7532,7 +7532,7 @@
           }
         ]
       },
-      "contents": "{\n\n    function allocate_unbounded() -> memPtr {\n        memPtr := mload(64)\n    }\n\n    function revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() {\n        revert(0, 0)\n    }\n\n    function revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db() {\n        revert(0, 0)\n    }\n\n    function revert_error_1b9f4a0a5773e33b91aa01db23bf8c55fce1411167c872835e7fa00a4f17d46d() {\n        revert(0, 0)\n    }\n\n    function revert_error_987264b3b1d58a9c7f8255e93e81c77d86d6299019c33110a076957a3e06e2ae() {\n        revert(0, 0)\n    }\n\n    function round_up_to_mul_of_32(value) -> result {\n        result := and(add(value, 31), not(31))\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function finalize_allocation(memPtr, size) {\n        let newFreePtr := add(memPtr, round_up_to_mul_of_32(size))\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function allocate_memory(size) -> memPtr {\n        memPtr := allocate_unbounded()\n        finalize_allocation(memPtr, size)\n    }\n\n    function array_allocation_size_t_string_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        size := round_up_to_mul_of_32(length)\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function copy_calldata_to_memory(src, dst, length) {\n        calldatacopy(dst, src, length)\n        // clear end\n        mstore(add(dst, length), 0)\n    }\n\n    function abi_decode_available_length_t_string_memory_ptr(src, length, end) -> array {\n        array := allocate_memory(array_allocation_size_t_string_memory_ptr(length))\n        mstore(array, length)\n        let dst := add(array, 0x20)\n        if gt(add(src, length), end) { revert_error_987264b3b1d58a9c7f8255e93e81c77d86d6299019c33110a076957a3e06e2ae() }\n        copy_calldata_to_memory(src, dst, length)\n    }\n\n    // string\n    function abi_decode_t_string_memory_ptr(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert_error_1b9f4a0a5773e33b91aa01db23bf8c55fce1411167c872835e7fa00a4f17d46d() }\n        let length := calldataload(offset)\n        array := abi_decode_available_length_t_string_memory_ptr(add(offset, 0x20), length, end)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_uint256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function cleanup_t_int256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function validator_revert_t_int256(value) {\n        if iszero(eq(value, cleanup_t_int256(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_int256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_int256(value)\n    }\n\n    function abi_decode_tuple_t_string_memory_ptrt_uint256t_int256(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := calldataload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db() }\n\n            value0 := abi_decode_t_string_memory_ptr(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint256(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function validator_revert_t_address(value) {\n        if iszero(eq(value, cleanup_t_address(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_address(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_address(value)\n    }\n\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_int256_to_t_int256_fromStack(value, pos) {\n        mstore(pos, cleanup_t_int256(value))\n    }\n\n    function abi_encode_tuple_t_int256__to_t_int256__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_int256_to_t_int256_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_t_address_to_t_address(value, pos) {\n        mstore(pos, cleanup_t_address(value))\n    }\n\n    function array_length_t_string_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, round_up_to_mul_of_32(length))\n    }\n\n    function abi_encode_t_uint256_to_t_uint256(value, pos) {\n        mstore(pos, cleanup_t_uint256(value))\n    }\n\n    function array_length_t_array$_t_int256_$dyn_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_array$_t_int256_$dyn_memory_ptr(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function array_dataslot_t_array$_t_int256_$dyn_memory_ptr(ptr) -> data {\n        data := ptr\n\n        data := add(ptr, 0x20)\n\n    }\n\n    function abi_encode_t_int256_to_t_int256(value, pos) {\n        mstore(pos, cleanup_t_int256(value))\n    }\n\n    function abi_encodeUpdatedPos_t_int256_to_t_int256(value0, pos) -> updatedPos {\n        abi_encode_t_int256_to_t_int256(value0, pos)\n        updatedPos := add(pos, 0x20)\n    }\n\n    function array_nextElement_t_array$_t_int256_$dyn_memory_ptr(ptr) -> next {\n        next := add(ptr, 0x20)\n    }\n\n    // int256[] -> int256[]\n    function abi_encode_t_array$_t_int256_$dyn_memory_ptr_to_t_array$_t_int256_$dyn_memory_ptr(value, pos)  -> end  {\n        let length := array_length_t_array$_t_int256_$dyn_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_array$_t_int256_$dyn_memory_ptr(pos, length)\n        let baseRef := array_dataslot_t_array$_t_int256_$dyn_memory_ptr(value)\n        let srcPtr := baseRef\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementValue0 := mload(srcPtr)\n            pos := abi_encodeUpdatedPos_t_int256_to_t_int256(elementValue0, pos)\n            srcPtr := array_nextElement_t_array$_t_int256_$dyn_memory_ptr(srcPtr)\n        }\n        end := pos\n    }\n\n    // struct FogNodeManagement.FogNode -> struct FogNodeManagement.FogNode\n    function abi_encode_t_struct$_FogNode_$248_memory_ptr_to_t_struct$_FogNode_$248_memory_ptr_fromStack(value, pos)  -> end  {\n        let tail := add(pos, 0xa0)\n\n        {\n            // owner\n\n            let memberValue0 := mload(add(value, 0x00))\n            abi_encode_t_address_to_t_address(memberValue0, add(pos, 0x00))\n        }\n\n        {\n            // location\n\n            let memberValue0 := mload(add(value, 0x20))\n\n            mstore(add(pos, 0x20), sub(tail, pos))\n            tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr(memberValue0, tail)\n\n        }\n\n        {\n            // processingCapability\n\n            let memberValue0 := mload(add(value, 0x40))\n            abi_encode_t_uint256_to_t_uint256(memberValue0, add(pos, 0x40))\n        }\n\n        {\n            // ratings\n\n            let memberValue0 := mload(add(value, 0x60))\n\n            mstore(add(pos, 0x60), sub(tail, pos))\n            tail := abi_encode_t_array$_t_int256_$dyn_memory_ptr_to_t_array$_t_int256_$dyn_memory_ptr(memberValue0, tail)\n\n        }\n\n        {\n            // rating\n\n            let memberValue0 := mload(add(value, 0x80))\n            abi_encode_t_int256_to_t_int256(memberValue0, add(pos, 0x80))\n        }\n\n        end := tail\n    }\n\n    function abi_encode_tuple_t_struct$_FogNode_$248_memory_ptr__to_t_struct$_FogNode_$248_memory_ptr__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_struct$_FogNode_$248_memory_ptr_to_t_struct$_FogNode_$248_memory_ptr_fromStack(value0,  tail)\n\n    }\n\n    function abi_decode_tuple_t_addresst_int256t_int256(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function panic_error_0x32() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function checked_add_t_int256(x, y) -> sum {\n        x := cleanup_t_int256(x)\n        y := cleanup_t_int256(y)\n\n        // overflow, if x >= 0 and y > (maxValue - x)\n        if and(iszero(slt(x, 0)), sgt(y, sub(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, x))) { panic_error_0x11() }\n        // underflow, if x < 0 and y < (minValue - x)\n        if and(slt(x, 0), slt(y, sub(0x8000000000000000000000000000000000000000000000000000000000000000, x))) { panic_error_0x11() }\n\n        sum := add(x, y)\n    }\n\n    function increment_t_uint256(value) -> ret {\n        value := cleanup_t_uint256(value)\n        if eq(value, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n\n    function panic_error_0x12() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x12)\n        revert(0, 0x24)\n    }\n\n    function checked_div_t_int256(x, y) -> r {\n        x := cleanup_t_int256(x)\n        y := cleanup_t_int256(y)\n        if iszero(y) { panic_error_0x12() }\n\n        // overflow for minVal / -1\n        if and(\n            eq(x, 0x8000000000000000000000000000000000000000000000000000000000000000),\n            eq(y, sub(0, 1))\n        ) { panic_error_0x11() }\n\n        r := sdiv(x, y)\n    }\n\n    function panic_error_0x22() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x22)\n        revert(0, 0x24)\n    }\n\n    function extract_byte_array_length(data) -> length {\n        length := div(data, 2)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) {\n            length := and(length, 0x7f)\n        }\n\n        if eq(outOfPlaceEncoding, lt(length, 32)) {\n            panic_error_0x22()\n        }\n    }\n\n    function checked_mul_t_int256(x, y) -> product {\n        x := cleanup_t_int256(x)\n        y := cleanup_t_int256(y)\n\n        // overflow, if x > 0, y > 0 and x > (maxValue / y)\n        if and(and(sgt(x, 0), sgt(y, 0)), gt(x, div(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y))) { panic_error_0x11() }\n        // underflow, if x > 0, y < 0 and y < (minValue / x)\n        if and(and(sgt(x, 0), slt(y, 0)), slt(y, sdiv(0x8000000000000000000000000000000000000000000000000000000000000000, x))) { panic_error_0x11() }\n        // underflow, if x < 0, y > 0 and x < (minValue / y)\n        if and(and(slt(x, 0), sgt(y, 0)), slt(x, sdiv(0x8000000000000000000000000000000000000000000000000000000000000000, y))) { panic_error_0x11() }\n        // overflow, if x < 0, y < 0 and x < (maxValue / y)\n        if and(and(slt(x, 0), slt(y, 0)), slt(x, sdiv(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y))) { panic_error_0x11() }\n\n        product := mul(x, y)\n    }\n\n}\n",
+      "contents": "{\n\n    function allocate_unbounded() -> memPtr {\n        memPtr := mload(64)\n    }\n\n    function revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() {\n        revert(0, 0)\n    }\n\n    function revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db() {\n        revert(0, 0)\n    }\n\n    function revert_error_1b9f4a0a5773e33b91aa01db23bf8c55fce1411167c872835e7fa00a4f17d46d() {\n        revert(0, 0)\n    }\n\n    function revert_error_987264b3b1d58a9c7f8255e93e81c77d86d6299019c33110a076957a3e06e2ae() {\n        revert(0, 0)\n    }\n\n    function round_up_to_mul_of_32(value) -> result {\n        result := and(add(value, 31), not(31))\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function finalize_allocation(memPtr, size) {\n        let newFreePtr := add(memPtr, round_up_to_mul_of_32(size))\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function allocate_memory(size) -> memPtr {\n        memPtr := allocate_unbounded()\n        finalize_allocation(memPtr, size)\n    }\n\n    function array_allocation_size_t_string_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        size := round_up_to_mul_of_32(length)\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function copy_calldata_to_memory(src, dst, length) {\n        calldatacopy(dst, src, length)\n        // clear end\n        mstore(add(dst, length), 0)\n    }\n\n    function abi_decode_available_length_t_string_memory_ptr(src, length, end) -> array {\n        array := allocate_memory(array_allocation_size_t_string_memory_ptr(length))\n        mstore(array, length)\n        let dst := add(array, 0x20)\n        if gt(add(src, length), end) { revert_error_987264b3b1d58a9c7f8255e93e81c77d86d6299019c33110a076957a3e06e2ae() }\n        copy_calldata_to_memory(src, dst, length)\n    }\n\n    // string\n    function abi_decode_t_string_memory_ptr(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert_error_1b9f4a0a5773e33b91aa01db23bf8c55fce1411167c872835e7fa00a4f17d46d() }\n        let length := calldataload(offset)\n        array := abi_decode_available_length_t_string_memory_ptr(add(offset, 0x20), length, end)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_uint256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function cleanup_t_int256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function validator_revert_t_int256(value) {\n        if iszero(eq(value, cleanup_t_int256(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_int256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_int256(value)\n    }\n\n    function abi_decode_tuple_t_string_memory_ptrt_uint256t_int256(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := calldataload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert_error_c1322bf8034eace5e0b5c7295db60986aa89aae5e0ea0873e4689e076861a5db() }\n\n            value0 := abi_decode_t_string_memory_ptr(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint256(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function validator_revert_t_address(value) {\n        if iszero(eq(value, cleanup_t_address(value))) { revert(0, 0) }\n    }\n\n    function abi_decode_t_address(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_address(value)\n    }\n\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_int256_to_t_int256_fromStack(value, pos) {\n        mstore(pos, cleanup_t_int256(value))\n    }\n\n    function abi_encode_tuple_t_int256__to_t_int256__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_int256_to_t_int256_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_t_address_to_t_address(value, pos) {\n        mstore(pos, cleanup_t_address(value))\n    }\n\n    function array_length_t_string_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, round_up_to_mul_of_32(length))\n    }\n\n    function abi_encode_t_uint256_to_t_uint256(value, pos) {\n        mstore(pos, cleanup_t_uint256(value))\n    }\n\n    function array_length_t_array$_t_int256_$dyn_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_array$_t_int256_$dyn_memory_ptr(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function array_dataslot_t_array$_t_int256_$dyn_memory_ptr(ptr) -> data {\n        data := ptr\n\n        data := add(ptr, 0x20)\n\n    }\n\n    function abi_encode_t_int256_to_t_int256(value, pos) {\n        mstore(pos, cleanup_t_int256(value))\n    }\n\n    function abi_encodeUpdatedPos_t_int256_to_t_int256(value0, pos) -> updatedPos {\n        abi_encode_t_int256_to_t_int256(value0, pos)\n        updatedPos := add(pos, 0x20)\n    }\n\n    function array_nextElement_t_array$_t_int256_$dyn_memory_ptr(ptr) -> next {\n        next := add(ptr, 0x20)\n    }\n\n    // int256[] -> int256[]\n    function abi_encode_t_array$_t_int256_$dyn_memory_ptr_to_t_array$_t_int256_$dyn_memory_ptr(value, pos)  -> end  {\n        let length := array_length_t_array$_t_int256_$dyn_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_array$_t_int256_$dyn_memory_ptr(pos, length)\n        let baseRef := array_dataslot_t_array$_t_int256_$dyn_memory_ptr(value)\n        let srcPtr := baseRef\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementValue0 := mload(srcPtr)\n            pos := abi_encodeUpdatedPos_t_int256_to_t_int256(elementValue0, pos)\n            srcPtr := array_nextElement_t_array$_t_int256_$dyn_memory_ptr(srcPtr)\n        }\n        end := pos\n    }\n\n    // struct FogNodeManagement.FogNode -> struct FogNodeManagement.FogNode\n    function abi_encode_t_struct$_FogNode_$268_memory_ptr_to_t_struct$_FogNode_$268_memory_ptr_fromStack(value, pos)  -> end  {\n        let tail := add(pos, 0xa0)\n\n        {\n            // owner\n\n            let memberValue0 := mload(add(value, 0x00))\n            abi_encode_t_address_to_t_address(memberValue0, add(pos, 0x00))\n        }\n\n        {\n            // location\n\n            let memberValue0 := mload(add(value, 0x20))\n\n            mstore(add(pos, 0x20), sub(tail, pos))\n            tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr(memberValue0, tail)\n\n        }\n\n        {\n            // processingCapability\n\n            let memberValue0 := mload(add(value, 0x40))\n            abi_encode_t_uint256_to_t_uint256(memberValue0, add(pos, 0x40))\n        }\n\n        {\n            // ratings\n\n            let memberValue0 := mload(add(value, 0x60))\n\n            mstore(add(pos, 0x60), sub(tail, pos))\n            tail := abi_encode_t_array$_t_int256_$dyn_memory_ptr_to_t_array$_t_int256_$dyn_memory_ptr(memberValue0, tail)\n\n        }\n\n        {\n            // rating\n\n            let memberValue0 := mload(add(value, 0x80))\n            abi_encode_t_int256_to_t_int256(memberValue0, add(pos, 0x80))\n        }\n\n        end := tail\n    }\n\n    function abi_encode_tuple_t_struct$_FogNode_$268_memory_ptr__to_t_struct$_FogNode_$268_memory_ptr__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_struct$_FogNode_$268_memory_ptr_to_t_struct$_FogNode_$268_memory_ptr_fromStack(value0,  tail)\n\n    }\n\n    function abi_decode_tuple_t_addresst_int256t_int256(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert_error_dbdddcbe895c83990c08b3492a0e83918d802a52331272ac6fdb6a7c4aea3b1b() }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function panic_error_0x32() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function checked_add_t_int256(x, y) -> sum {\n        x := cleanup_t_int256(x)\n        y := cleanup_t_int256(y)\n\n        // overflow, if x >= 0 and y > (maxValue - x)\n        if and(iszero(slt(x, 0)), sgt(y, sub(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, x))) { panic_error_0x11() }\n        // underflow, if x < 0 and y < (minValue - x)\n        if and(slt(x, 0), slt(y, sub(0x8000000000000000000000000000000000000000000000000000000000000000, x))) { panic_error_0x11() }\n\n        sum := add(x, y)\n    }\n\n    function increment_t_uint256(value) -> ret {\n        value := cleanup_t_uint256(value)\n        if eq(value, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n\n    function panic_error_0x12() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x12)\n        revert(0, 0x24)\n    }\n\n    function checked_div_t_int256(x, y) -> r {\n        x := cleanup_t_int256(x)\n        y := cleanup_t_int256(y)\n        if iszero(y) { panic_error_0x12() }\n\n        // overflow for minVal / -1\n        if and(\n            eq(x, 0x8000000000000000000000000000000000000000000000000000000000000000),\n            eq(y, sub(0, 1))\n        ) { panic_error_0x11() }\n\n        r := sdiv(x, y)\n    }\n\n    function panic_error_0x22() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x22)\n        revert(0, 0x24)\n    }\n\n    function extract_byte_array_length(data) -> length {\n        length := div(data, 2)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) {\n            length := and(length, 0x7f)\n        }\n\n        if eq(outOfPlaceEncoding, lt(length, 32)) {\n            panic_error_0x22()\n        }\n    }\n\n    function checked_mul_t_int256(x, y) -> product {\n        x := cleanup_t_int256(x)\n        y := cleanup_t_int256(y)\n\n        // overflow, if x > 0, y > 0 and x > (maxValue / y)\n        if and(and(sgt(x, 0), sgt(y, 0)), gt(x, div(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y))) { panic_error_0x11() }\n        // underflow, if x > 0, y < 0 and y < (minValue / x)\n        if and(and(sgt(x, 0), slt(y, 0)), slt(y, sdiv(0x8000000000000000000000000000000000000000000000000000000000000000, x))) { panic_error_0x11() }\n        // underflow, if x < 0, y > 0 and x < (minValue / y)\n        if and(and(slt(x, 0), sgt(y, 0)), slt(x, sdiv(0x8000000000000000000000000000000000000000000000000000000000000000, y))) { panic_error_0x11() }\n        // overflow, if x < 0, y < 0 and x < (maxValue / y)\n        if and(and(slt(x, 0), slt(y, 0)), slt(x, sdiv(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y))) { panic_error_0x11() }\n\n        product := mul(x, y)\n    }\n\n}\n",
       "id": 3,
       "language": "Yul",
       "name": "#utility.yul"
@@ -7546,15 +7546,15 @@
     "absolutePath": "project:/contracts/FogNodeManagement.sol",
     "exportedSymbols": {
       "FogNodeManagement": [
-        421
+        441
       ]
     },
-    "id": 422,
+    "id": 442,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 236,
+        "id": 256,
         "literals": [
           "solidity",
           "^",
@@ -7571,9 +7571,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 421,
+        "id": 441,
         "linearizedBaseContracts": [
-          421
+          441
         ],
         "name": "FogNodeManagement",
         "nameLocation": "68:17:2",
@@ -7581,16 +7581,16 @@
         "nodes": [
           {
             "canonicalName": "FogNodeManagement.FogNode",
-            "id": 248,
+            "id": 268,
             "members": [
               {
                 "constant": false,
-                "id": 238,
+                "id": 258,
                 "mutability": "mutable",
                 "name": "owner",
                 "nameLocation": "126:5:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 248,
+                "scope": 268,
                 "src": "118:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7599,7 +7599,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 237,
+                  "id": 257,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "118:7:2",
@@ -7613,12 +7613,12 @@
               },
               {
                 "constant": false,
-                "id": 240,
+                "id": 260,
                 "mutability": "mutable",
                 "name": "location",
                 "nameLocation": "149:8:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 248,
+                "scope": 268,
                 "src": "142:15:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7627,7 +7627,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 239,
+                  "id": 259,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "142:6:2",
@@ -7640,12 +7640,12 @@
               },
               {
                 "constant": false,
-                "id": 242,
+                "id": 262,
                 "mutability": "mutable",
                 "name": "processingCapability",
                 "nameLocation": "173:20:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 248,
+                "scope": 268,
                 "src": "168:25:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7654,7 +7654,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 241,
+                  "id": 261,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "168:4:2",
@@ -7667,12 +7667,12 @@
               },
               {
                 "constant": false,
-                "id": 245,
+                "id": 265,
                 "mutability": "mutable",
                 "name": "ratings",
                 "nameLocation": "210:7:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 248,
+                "scope": 268,
                 "src": "204:13:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7682,7 +7682,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 243,
+                    "id": 263,
                     "name": "int",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:3:2",
@@ -7691,7 +7691,7 @@
                       "typeString": "int256"
                     }
                   },
-                  "id": 244,
+                  "id": 264,
                   "nodeType": "ArrayTypeName",
                   "src": "204:5:2",
                   "typeDescriptions": {
@@ -7703,12 +7703,12 @@
               },
               {
                 "constant": false,
-                "id": 247,
+                "id": 267,
                 "mutability": "mutable",
                 "name": "rating",
                 "nameLocation": "232:6:2",
                 "nodeType": "VariableDeclaration",
-                "scope": 248,
+                "scope": 268,
                 "src": "228:10:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7717,7 +7717,7 @@
                   "typeString": "int256"
                 },
                 "typeName": {
-                  "id": 246,
+                  "id": 266,
                   "name": "int",
                   "nodeType": "ElementaryTypeName",
                   "src": "228:3:2",
@@ -7732,29 +7732,29 @@
             "name": "FogNode",
             "nameLocation": "99:7:2",
             "nodeType": "StructDefinition",
-            "scope": 421,
+            "scope": 441,
             "src": "92:154:2",
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 253,
+            "id": 273,
             "mutability": "mutable",
             "name": "fogNodes",
             "nameLocation": "294:8:2",
             "nodeType": "VariableDeclaration",
-            "scope": 421,
+            "scope": 441,
             "src": "258:44:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
               "typeString": "mapping(address => struct FogNodeManagement.FogNode)"
             },
             "typeName": {
-              "id": 252,
+              "id": 272,
               "keyType": {
-                "id": 249,
+                "id": 269,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "266:7:2",
@@ -7766,23 +7766,23 @@
               "nodeType": "Mapping",
               "src": "258:27:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                 "typeString": "mapping(address => struct FogNodeManagement.FogNode)"
               },
               "valueType": {
-                "id": 251,
+                "id": 271,
                 "nodeType": "UserDefinedTypeName",
                 "pathNode": {
-                  "id": 250,
+                  "id": 270,
                   "name": "FogNode",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 248,
+                  "referencedDeclaration": 268,
                   "src": "277:7:2"
                 },
-                "referencedDeclaration": 248,
+                "referencedDeclaration": 268,
                 "src": "277:7:2",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_FogNode_$248_storage_ptr",
+                  "typeIdentifier": "t_struct$_FogNode_$268_storage_ptr",
                   "typeString": "struct FogNodeManagement.FogNode"
                 }
               }
@@ -7791,31 +7791,31 @@
           },
           {
             "body": {
-              "id": 265,
+              "id": 285,
               "nodeType": "Block",
               "src": "388:44:2",
               "statements": [
                 {
                   "expression": {
                     "baseExpression": {
-                      "id": 261,
+                      "id": 281,
                       "name": "fogNodes",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 253,
+                      "referencedDeclaration": 273,
                       "src": "406:8:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                         "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                       }
                     },
-                    "id": 263,
+                    "id": 283,
                     "indexExpression": {
-                      "id": 262,
+                      "id": 282,
                       "name": "_address",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 255,
+                      "referencedDeclaration": 275,
                       "src": "415:8:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -7829,19 +7829,19 @@
                     "nodeType": "IndexAccess",
                     "src": "406:18:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                      "typeIdentifier": "t_struct$_FogNode_$268_storage",
                       "typeString": "struct FogNodeManagement.FogNode storage ref"
                     }
                   },
-                  "functionReturnParameters": 260,
-                  "id": 264,
+                  "functionReturnParameters": 280,
+                  "id": 284,
                   "nodeType": "Return",
                   "src": "399:25:2"
                 }
               ]
             },
             "functionSelector": "a96fadc5",
-            "id": 266,
+            "id": 286,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -7849,17 +7849,17 @@
             "nameLocation": "320:12:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 256,
+              "id": 276,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 255,
+                  "id": 275,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "341:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 266,
+                  "scope": 286,
                   "src": "333:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -7868,7 +7868,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 254,
+                    "id": 274,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "333:7:2",
@@ -7884,38 +7884,38 @@
               "src": "332:18:2"
             },
             "returnParameters": {
-              "id": 260,
+              "id": 280,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 259,
+                  "id": 279,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 266,
+                  "scope": 286,
                   "src": "372:14:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_FogNode_$248_memory_ptr",
+                    "typeIdentifier": "t_struct$_FogNode_$268_memory_ptr",
                     "typeString": "struct FogNodeManagement.FogNode"
                   },
                   "typeName": {
-                    "id": 258,
+                    "id": 278,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 257,
+                      "id": 277,
                       "name": "FogNode",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 248,
+                      "referencedDeclaration": 268,
                       "src": "372:7:2"
                     },
-                    "referencedDeclaration": 248,
+                    "referencedDeclaration": 268,
                     "src": "372:7:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_FogNode_$248_storage_ptr",
+                      "typeIdentifier": "t_struct$_FogNode_$268_storage_ptr",
                       "typeString": "struct FogNodeManagement.FogNode"
                     }
                   },
@@ -7924,7 +7924,7 @@
               ],
               "src": "371:16:2"
             },
-            "scope": 421,
+            "scope": 441,
             "src": "311:121:2",
             "stateMutability": "view",
             "virtual": false,
@@ -7932,23 +7932,23 @@
           },
           {
             "body": {
-              "id": 313,
+              "id": 333,
               "nodeType": "Block",
               "src": "507:224:2",
               "statements": [
                 {
                   "assignments": [
-                    274
+                    294
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 274,
+                      "id": 294,
                       "mutability": "mutable",
                       "name": "sum",
                       "nameLocation": "522:3:2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 313,
+                      "scope": 333,
                       "src": "518:7:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -7957,7 +7957,7 @@
                         "typeString": "int256"
                       },
                       "typeName": {
-                        "id": 273,
+                        "id": 293,
                         "name": "int",
                         "nodeType": "ElementaryTypeName",
                         "src": "518:3:2",
@@ -7969,10 +7969,10 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 276,
+                  "id": 296,
                   "initialValue": {
                     "hexValue": "30",
-                    "id": 275,
+                    "id": 295,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -7991,23 +7991,23 @@
                 },
                 {
                   "body": {
-                    "id": 300,
+                    "id": 320,
                     "nodeType": "Block",
                     "src": "599:63:2",
                     "statements": [
                       {
                         "expression": {
-                          "id": 298,
+                          "id": 318,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftHandSide": {
-                            "id": 291,
+                            "id": 311,
                             "name": "sum",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 274,
+                            "referencedDeclaration": 294,
                             "src": "614:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_int256",
@@ -8020,24 +8020,24 @@
                             "baseExpression": {
                               "expression": {
                                 "baseExpression": {
-                                  "id": 292,
+                                  "id": 312,
                                   "name": "fogNodes",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 253,
+                                  "referencedDeclaration": 273,
                                   "src": "621:8:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                                     "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                                   }
                                 },
-                                "id": 294,
+                                "id": 314,
                                 "indexExpression": {
-                                  "id": 293,
+                                  "id": 313,
                                   "name": "_address",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 268,
+                                  "referencedDeclaration": 288,
                                   "src": "630:8:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -8051,31 +8051,31 @@
                                 "nodeType": "IndexAccess",
                                 "src": "621:18:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                                  "typeIdentifier": "t_struct$_FogNode_$268_storage",
                                   "typeString": "struct FogNodeManagement.FogNode storage ref"
                                 }
                               },
-                              "id": 295,
+                              "id": 315,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "ratings",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 245,
+                              "referencedDeclaration": 265,
                               "src": "621:26:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                                 "typeString": "int256[] storage ref"
                               }
                             },
-                            "id": 297,
+                            "id": 317,
                             "indexExpression": {
-                              "id": 296,
+                              "id": 316,
                               "name": "i",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 278,
+                              "referencedDeclaration": 298,
                               "src": "648:1:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -8099,7 +8099,7 @@
                             "typeString": "int256"
                           }
                         },
-                        "id": 299,
+                        "id": 319,
                         "nodeType": "ExpressionStatement",
                         "src": "614:36:2"
                       }
@@ -8110,17 +8110,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 287,
+                    "id": 307,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 281,
+                      "id": 301,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 278,
+                      "referencedDeclaration": 298,
                       "src": "556:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -8133,24 +8133,24 @@
                       "expression": {
                         "expression": {
                           "baseExpression": {
-                            "id": 282,
+                            "id": 302,
                             "name": "fogNodes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 253,
+                            "referencedDeclaration": 273,
                             "src": "560:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                               "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                             }
                           },
-                          "id": 284,
+                          "id": 304,
                           "indexExpression": {
-                            "id": 283,
+                            "id": 303,
                             "name": "_address",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 268,
+                            "referencedDeclaration": 288,
                             "src": "569:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -8164,25 +8164,25 @@
                           "nodeType": "IndexAccess",
                           "src": "560:18:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                            "typeIdentifier": "t_struct$_FogNode_$268_storage",
                             "typeString": "struct FogNodeManagement.FogNode storage ref"
                           }
                         },
-                        "id": 285,
+                        "id": 305,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "ratings",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 245,
+                        "referencedDeclaration": 265,
                         "src": "560:26:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                           "typeString": "int256[] storage ref"
                         }
                       },
-                      "id": 286,
+                      "id": 306,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8201,20 +8201,20 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 301,
+                  "id": 321,
                   "initializationExpression": {
                     "assignments": [
-                      278
+                      298
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 278,
+                        "id": 298,
                         "mutability": "mutable",
                         "name": "i",
                         "nameLocation": "549:1:2",
                         "nodeType": "VariableDeclaration",
-                        "scope": 301,
+                        "scope": 321,
                         "src": "544:6:2",
                         "stateVariable": false,
                         "storageLocation": "default",
@@ -8223,7 +8223,7 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 277,
+                          "id": 297,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
                           "src": "544:4:2",
@@ -8235,10 +8235,10 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 280,
+                    "id": 300,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 279,
+                      "id": 299,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -8257,7 +8257,7 @@
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 289,
+                      "id": 309,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8267,11 +8267,11 @@
                       "prefix": false,
                       "src": "595:3:2",
                       "subExpression": {
-                        "id": 288,
+                        "id": 308,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 278,
+                        "referencedDeclaration": 298,
                         "src": "595:1:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -8283,7 +8283,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 290,
+                    "id": 310,
                     "nodeType": "ExpressionStatement",
                     "src": "595:3:2"
                   },
@@ -8296,17 +8296,17 @@
                       "typeIdentifier": "t_int256",
                       "typeString": "int256"
                     },
-                    "id": 311,
+                    "id": 331,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 302,
+                      "id": 322,
                       "name": "sum",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 274,
+                      "referencedDeclaration": 294,
                       "src": "679:3:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_int256",
@@ -8321,24 +8321,24 @@
                           "expression": {
                             "expression": {
                               "baseExpression": {
-                                "id": 305,
+                                "id": 325,
                                 "name": "fogNodes",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 253,
+                                "referencedDeclaration": 273,
                                 "src": "689:8:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                                   "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                                 }
                               },
-                              "id": 307,
+                              "id": 327,
                               "indexExpression": {
-                                "id": 306,
+                                "id": 326,
                                 "name": "_address",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 268,
+                                "referencedDeclaration": 288,
                                 "src": "698:8:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
@@ -8352,25 +8352,25 @@
                               "nodeType": "IndexAccess",
                               "src": "689:18:2",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                                "typeIdentifier": "t_struct$_FogNode_$268_storage",
                                 "typeString": "struct FogNodeManagement.FogNode storage ref"
                               }
                             },
-                            "id": 308,
+                            "id": 328,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "ratings",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 245,
+                            "referencedDeclaration": 265,
                             "src": "689:26:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                               "typeString": "int256[] storage ref"
                             }
                           },
-                          "id": 309,
+                          "id": 329,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -8391,7 +8391,7 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 304,
+                        "id": 324,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -8403,14 +8403,14 @@
                           "typeString": "type(int256)"
                         },
                         "typeName": {
-                          "id": 303,
+                          "id": 323,
                           "name": "int",
                           "nodeType": "ElementaryTypeName",
                           "src": "685:3:2",
                           "typeDescriptions": {}
                         }
                       },
-                      "id": 310,
+                      "id": 330,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8431,15 +8431,15 @@
                       "typeString": "int256"
                     }
                   },
-                  "functionReturnParameters": 272,
-                  "id": 312,
+                  "functionReturnParameters": 292,
+                  "id": 332,
                   "nodeType": "Return",
                   "src": "672:51:2"
                 }
               ]
             },
             "functionSelector": "46d24995",
-            "id": 314,
+            "id": 334,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8447,17 +8447,17 @@
             "nameLocation": "449:13:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 269,
+              "id": 289,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 268,
+                  "id": 288,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "471:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 314,
+                  "scope": 334,
                   "src": "463:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8466,7 +8466,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 267,
+                    "id": 287,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "463:7:2",
@@ -8482,17 +8482,17 @@
               "src": "462:18:2"
             },
             "returnParameters": {
-              "id": 272,
+              "id": 292,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 271,
+                  "id": 291,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 314,
+                  "scope": 334,
                   "src": "502:3:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8501,7 +8501,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 270,
+                    "id": 290,
                     "name": "int",
                     "nodeType": "ElementaryTypeName",
                     "src": "502:3:2",
@@ -8515,7 +8515,7 @@
               ],
               "src": "501:5:2"
             },
-            "scope": 421,
+            "scope": 441,
             "src": "440:291:2",
             "stateMutability": "view",
             "virtual": false,
@@ -8523,7 +8523,7 @@
           },
           {
             "body": {
-              "id": 333,
+              "id": 353,
               "nodeType": "Block",
               "src": "805:63:2",
               "statements": [
@@ -8535,17 +8535,17 @@
                           "typeIdentifier": "t_int256",
                           "typeString": "int256"
                         },
-                        "id": 330,
+                        "id": 350,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
-                          "id": 328,
+                          "id": 348,
                           "name": "rating",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 318,
+                          "referencedDeclaration": 338,
                           "src": "848:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_int256",
@@ -8555,11 +8555,11 @@
                         "nodeType": "BinaryOperation",
                         "operator": "*",
                         "rightExpression": {
-                          "id": 329,
+                          "id": 349,
                           "name": "cred",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 320,
+                          "referencedDeclaration": 340,
                           "src": "855:4:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_int256",
@@ -8583,24 +8583,24 @@
                       "expression": {
                         "expression": {
                           "baseExpression": {
-                            "id": 323,
+                            "id": 343,
                             "name": "fogNodes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 253,
+                            "referencedDeclaration": 273,
                             "src": "816:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                               "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                             }
                           },
-                          "id": 325,
+                          "id": 345,
                           "indexExpression": {
-                            "id": 324,
+                            "id": 344,
                             "name": "_address",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 316,
+                            "referencedDeclaration": 336,
                             "src": "825:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -8614,25 +8614,25 @@
                           "nodeType": "IndexAccess",
                           "src": "816:18:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                            "typeIdentifier": "t_struct$_FogNode_$268_storage",
                             "typeString": "struct FogNodeManagement.FogNode storage ref"
                           }
                         },
-                        "id": 326,
+                        "id": 346,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "ratings",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 245,
+                        "referencedDeclaration": 265,
                         "src": "816:26:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                           "typeString": "int256[] storage ref"
                         }
                       },
-                      "id": 327,
+                      "id": 347,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8645,7 +8645,7 @@
                         "typeString": "function (int256[] storage pointer,int256)"
                       }
                     },
-                    "id": 331,
+                    "id": 351,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8660,14 +8660,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 332,
+                  "id": 352,
                   "nodeType": "ExpressionStatement",
                   "src": "816:44:2"
                 }
               ]
             },
             "functionSelector": "eef4a9e4",
-            "id": 334,
+            "id": 354,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8675,17 +8675,17 @@
             "nameLocation": "748:9:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 321,
+              "id": 341,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 316,
+                  "id": 336,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "766:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 334,
+                  "scope": 354,
                   "src": "758:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8694,7 +8694,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 315,
+                    "id": 335,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "758:7:2",
@@ -8708,12 +8708,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 318,
+                  "id": 338,
                   "mutability": "mutable",
                   "name": "rating",
                   "nameLocation": "780:6:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 334,
+                  "scope": 354,
                   "src": "776:10:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8722,7 +8722,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 317,
+                    "id": 337,
                     "name": "int",
                     "nodeType": "ElementaryTypeName",
                     "src": "776:3:2",
@@ -8735,12 +8735,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 320,
+                  "id": 340,
                   "mutability": "mutable",
                   "name": "cred",
                   "nameLocation": "792:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 334,
+                  "scope": 354,
                   "src": "788:8:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8749,7 +8749,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 319,
+                    "id": 339,
                     "name": "int",
                     "nodeType": "ElementaryTypeName",
                     "src": "788:3:2",
@@ -8764,12 +8764,12 @@
               "src": "757:40:2"
             },
             "returnParameters": {
-              "id": 322,
+              "id": 342,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "805:0:2"
             },
-            "scope": 421,
+            "scope": 441,
             "src": "739:129:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -8777,23 +8777,23 @@
           },
           {
             "body": {
-              "id": 384,
+              "id": 404,
               "nodeType": "Block",
               "src": "923:245:2",
               "statements": [
                 {
                   "assignments": [
-                    340
+                    360
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 340,
+                      "id": 360,
                       "mutability": "mutable",
                       "name": "sum",
                       "nameLocation": "938:3:2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 384,
+                      "scope": 404,
                       "src": "934:7:2",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -8802,7 +8802,7 @@
                         "typeString": "int256"
                       },
                       "typeName": {
-                        "id": 339,
+                        "id": 359,
                         "name": "int",
                         "nodeType": "ElementaryTypeName",
                         "src": "934:3:2",
@@ -8814,10 +8814,10 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 342,
+                  "id": 362,
                   "initialValue": {
                     "hexValue": "30",
-                    "id": 341,
+                    "id": 361,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -8836,23 +8836,23 @@
                 },
                 {
                   "body": {
-                    "id": 366,
+                    "id": 386,
                     "nodeType": "Block",
                     "src": "1015:63:2",
                     "statements": [
                       {
                         "expression": {
-                          "id": 364,
+                          "id": 384,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftHandSide": {
-                            "id": 357,
+                            "id": 377,
                             "name": "sum",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 340,
+                            "referencedDeclaration": 360,
                             "src": "1030:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_int256",
@@ -8865,24 +8865,24 @@
                             "baseExpression": {
                               "expression": {
                                 "baseExpression": {
-                                  "id": 358,
+                                  "id": 378,
                                   "name": "fogNodes",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 253,
+                                  "referencedDeclaration": 273,
                                   "src": "1037:8:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                                     "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                                   }
                                 },
-                                "id": 360,
+                                "id": 380,
                                 "indexExpression": {
-                                  "id": 359,
+                                  "id": 379,
                                   "name": "_address",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 336,
+                                  "referencedDeclaration": 356,
                                   "src": "1046:8:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -8896,31 +8896,31 @@
                                 "nodeType": "IndexAccess",
                                 "src": "1037:18:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                                  "typeIdentifier": "t_struct$_FogNode_$268_storage",
                                   "typeString": "struct FogNodeManagement.FogNode storage ref"
                                 }
                               },
-                              "id": 361,
+                              "id": 381,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "ratings",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 245,
+                              "referencedDeclaration": 265,
                               "src": "1037:26:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                                 "typeString": "int256[] storage ref"
                               }
                             },
-                            "id": 363,
+                            "id": 383,
                             "indexExpression": {
-                              "id": 362,
+                              "id": 382,
                               "name": "i",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 344,
+                              "referencedDeclaration": 364,
                               "src": "1064:1:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -8944,7 +8944,7 @@
                             "typeString": "int256"
                           }
                         },
-                        "id": 365,
+                        "id": 385,
                         "nodeType": "ExpressionStatement",
                         "src": "1030:36:2"
                       }
@@ -8955,17 +8955,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 353,
+                    "id": 373,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 347,
+                      "id": 367,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 344,
+                      "referencedDeclaration": 364,
                       "src": "972:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -8978,24 +8978,24 @@
                       "expression": {
                         "expression": {
                           "baseExpression": {
-                            "id": 348,
+                            "id": 368,
                             "name": "fogNodes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 253,
+                            "referencedDeclaration": 273,
                             "src": "976:8:2",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                               "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                             }
                           },
-                          "id": 350,
+                          "id": 370,
                           "indexExpression": {
-                            "id": 349,
+                            "id": 369,
                             "name": "_address",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 336,
+                            "referencedDeclaration": 356,
                             "src": "985:8:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -9009,25 +9009,25 @@
                           "nodeType": "IndexAccess",
                           "src": "976:18:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                            "typeIdentifier": "t_struct$_FogNode_$268_storage",
                             "typeString": "struct FogNodeManagement.FogNode storage ref"
                           }
                         },
-                        "id": 351,
+                        "id": 371,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "ratings",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 245,
+                        "referencedDeclaration": 265,
                         "src": "976:26:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                           "typeString": "int256[] storage ref"
                         }
                       },
-                      "id": 352,
+                      "id": 372,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -9046,20 +9046,20 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 367,
+                  "id": 387,
                   "initializationExpression": {
                     "assignments": [
-                      344
+                      364
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 344,
+                        "id": 364,
                         "mutability": "mutable",
                         "name": "i",
                         "nameLocation": "965:1:2",
                         "nodeType": "VariableDeclaration",
-                        "scope": 367,
+                        "scope": 387,
                         "src": "960:6:2",
                         "stateVariable": false,
                         "storageLocation": "default",
@@ -9068,7 +9068,7 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 343,
+                          "id": 363,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
                           "src": "960:4:2",
@@ -9080,10 +9080,10 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 346,
+                    "id": 366,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 345,
+                      "id": 365,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -9102,7 +9102,7 @@
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 355,
+                      "id": 375,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -9112,11 +9112,11 @@
                       "prefix": false,
                       "src": "1011:3:2",
                       "subExpression": {
-                        "id": 354,
+                        "id": 374,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 344,
+                        "referencedDeclaration": 364,
                         "src": "1011:1:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -9128,7 +9128,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 356,
+                    "id": 376,
                     "nodeType": "ExpressionStatement",
                     "src": "1011:3:2"
                   },
@@ -9137,7 +9137,7 @@
                 },
                 {
                   "expression": {
-                    "id": 382,
+                    "id": 402,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9145,24 +9145,24 @@
                     "leftHandSide": {
                       "expression": {
                         "baseExpression": {
-                          "id": 368,
+                          "id": 388,
                           "name": "fogNodes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 253,
+                          "referencedDeclaration": 273,
                           "src": "1088:8:2",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                             "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                           }
                         },
-                        "id": 370,
+                        "id": 390,
                         "indexExpression": {
-                          "id": 369,
+                          "id": 389,
                           "name": "_address",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 336,
+                          "referencedDeclaration": 356,
                           "src": "1097:8:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -9176,18 +9176,18 @@
                         "nodeType": "IndexAccess",
                         "src": "1088:18:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                          "typeIdentifier": "t_struct$_FogNode_$268_storage",
                           "typeString": "struct FogNodeManagement.FogNode storage ref"
                         }
                       },
-                      "id": 371,
+                      "id": 391,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "rating",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 247,
+                      "referencedDeclaration": 267,
                       "src": "1088:25:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_int256",
@@ -9201,17 +9201,17 @@
                         "typeIdentifier": "t_int256",
                         "typeString": "int256"
                       },
-                      "id": 381,
+                      "id": 401,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
-                        "id": 372,
+                        "id": 392,
                         "name": "sum",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 340,
+                        "referencedDeclaration": 360,
                         "src": "1116:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_int256",
@@ -9226,24 +9226,24 @@
                             "expression": {
                               "expression": {
                                 "baseExpression": {
-                                  "id": 375,
+                                  "id": 395,
                                   "name": "fogNodes",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 253,
+                                  "referencedDeclaration": 273,
                                   "src": "1126:8:2",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                                     "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                                   }
                                 },
-                                "id": 377,
+                                "id": 397,
                                 "indexExpression": {
-                                  "id": 376,
+                                  "id": 396,
                                   "name": "_address",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 336,
+                                  "referencedDeclaration": 356,
                                   "src": "1135:8:2",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -9257,25 +9257,25 @@
                                 "nodeType": "IndexAccess",
                                 "src": "1126:18:2",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                                  "typeIdentifier": "t_struct$_FogNode_$268_storage",
                                   "typeString": "struct FogNodeManagement.FogNode storage ref"
                                 }
                               },
-                              "id": 378,
+                              "id": 398,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "ratings",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 245,
+                              "referencedDeclaration": 265,
                               "src": "1126:26:2",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_int256_$dyn_storage",
                                 "typeString": "int256[] storage ref"
                               }
                             },
-                            "id": 379,
+                            "id": 399,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -9296,7 +9296,7 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "id": 374,
+                          "id": 394,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -9308,14 +9308,14 @@
                             "typeString": "type(int256)"
                           },
                           "typeName": {
-                            "id": 373,
+                            "id": 393,
                             "name": "int",
                             "nodeType": "ElementaryTypeName",
                             "src": "1122:3:2",
                             "typeDescriptions": {}
                           }
                         },
-                        "id": 380,
+                        "id": 400,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -9342,14 +9342,14 @@
                       "typeString": "int256"
                     }
                   },
-                  "id": 383,
+                  "id": 403,
                   "nodeType": "ExpressionStatement",
                   "src": "1088:72:2"
                 }
               ]
             },
             "functionSelector": "2ca5fa88",
-            "id": 385,
+            "id": 405,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -9357,17 +9357,17 @@
             "nameLocation": "885:12:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 337,
+              "id": 357,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 336,
+                  "id": 356,
                   "mutability": "mutable",
                   "name": "_address",
                   "nameLocation": "906:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 385,
+                  "scope": 405,
                   "src": "898:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9376,7 +9376,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 335,
+                    "id": 355,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "898:7:2",
@@ -9392,12 +9392,12 @@
               "src": "897:18:2"
             },
             "returnParameters": {
-              "id": 338,
+              "id": 358,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "923:0:2"
             },
-            "scope": 421,
+            "scope": 441,
             "src": "876:292:2",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -9405,23 +9405,23 @@
           },
           {
             "body": {
-              "id": 419,
+              "id": 439,
               "nodeType": "Block",
               "src": "1271:152:2",
               "statements": [
                 {
                   "assignments": [
-                    398
+                    418
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 398,
+                      "id": 418,
                       "mutability": "mutable",
                       "name": "empty",
                       "nameLocation": "1295:5:2",
                       "nodeType": "VariableDeclaration",
-                      "scope": 419,
+                      "scope": 439,
                       "src": "1282:18:2",
                       "stateVariable": false,
                       "storageLocation": "memory",
@@ -9431,7 +9431,7 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 396,
+                          "id": 416,
                           "name": "int",
                           "nodeType": "ElementaryTypeName",
                           "src": "1282:3:2",
@@ -9440,7 +9440,7 @@
                             "typeString": "int256"
                           }
                         },
-                        "id": 397,
+                        "id": 417,
                         "nodeType": "ArrayTypeName",
                         "src": "1282:5:2",
                         "typeDescriptions": {
@@ -9451,12 +9451,12 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 404,
+                  "id": 424,
                   "initialValue": {
                     "arguments": [
                       {
                         "hexValue": "30",
-                        "id": 402,
+                        "id": 422,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -9478,7 +9478,7 @@
                           "typeString": "int_const 0"
                         }
                       ],
-                      "id": 401,
+                      "id": 421,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -9491,7 +9491,7 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 399,
+                          "id": 419,
                           "name": "int",
                           "nodeType": "ElementaryTypeName",
                           "src": "1307:3:2",
@@ -9500,7 +9500,7 @@
                             "typeString": "int256"
                           }
                         },
-                        "id": 400,
+                        "id": 420,
                         "nodeType": "ArrayTypeName",
                         "src": "1307:5:2",
                         "typeDescriptions": {
@@ -9509,7 +9509,7 @@
                         }
                       }
                     },
-                    "id": 403,
+                    "id": 423,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -9529,28 +9529,28 @@
                 },
                 {
                   "expression": {
-                    "id": 417,
+                    "id": 437,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 405,
+                        "id": 425,
                         "name": "fogNodes",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 253,
+                        "referencedDeclaration": 273,
                         "src": "1326:8:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$248_storage_$",
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_FogNode_$268_storage_$",
                           "typeString": "mapping(address => struct FogNodeManagement.FogNode storage ref)"
                         }
                       },
-                      "id": 408,
+                      "id": 428,
                       "indexExpression": {
                         "expression": {
-                          "id": 406,
+                          "id": 426,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -9561,7 +9561,7 @@
                             "typeString": "msg"
                           }
                         },
-                        "id": 407,
+                        "id": 427,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -9581,7 +9581,7 @@
                       "nodeType": "IndexAccess",
                       "src": "1326:20:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                        "typeIdentifier": "t_struct$_FogNode_$268_storage",
                         "typeString": "struct FogNodeManagement.FogNode storage ref"
                       }
                     },
@@ -9591,7 +9591,7 @@
                       "arguments": [
                         {
                           "expression": {
-                            "id": 410,
+                            "id": 430,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
@@ -9602,7 +9602,7 @@
                               "typeString": "msg"
                             }
                           },
-                          "id": 411,
+                          "id": 431,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -9616,11 +9616,11 @@
                           }
                         },
                         {
-                          "id": 412,
+                          "id": 432,
                           "name": "location",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 387,
+                          "referencedDeclaration": 407,
                           "src": "1369:8:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
@@ -9628,11 +9628,11 @@
                           }
                         },
                         {
-                          "id": 413,
+                          "id": 433,
                           "name": "processingCapability",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 389,
+                          "referencedDeclaration": 409,
                           "src": "1379:20:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -9640,11 +9640,11 @@
                           }
                         },
                         {
-                          "id": 414,
+                          "id": 434,
                           "name": "empty",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 398,
+                          "referencedDeclaration": 418,
                           "src": "1401:5:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_int256_$dyn_memory_ptr",
@@ -9652,11 +9652,11 @@
                           }
                         },
                         {
-                          "id": 415,
+                          "id": 435,
                           "name": "rating",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 391,
+                          "referencedDeclaration": 411,
                           "src": "1408:6:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_int256",
@@ -9687,18 +9687,18 @@
                             "typeString": "int256"
                           }
                         ],
-                        "id": 409,
+                        "id": 429,
                         "name": "FogNode",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 248,
+                        "referencedDeclaration": 268,
                         "src": "1349:7:2",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_FogNode_$248_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_FogNode_$268_storage_ptr_$",
                           "typeString": "type(struct FogNodeManagement.FogNode storage pointer)"
                         }
                       },
-                      "id": 416,
+                      "id": 436,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -9709,24 +9709,24 @@
                       "src": "1349:66:2",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_FogNode_$248_memory_ptr",
+                        "typeIdentifier": "t_struct$_FogNode_$268_memory_ptr",
                         "typeString": "struct FogNodeManagement.FogNode memory"
                       }
                     },
                     "src": "1326:89:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_FogNode_$248_storage",
+                      "typeIdentifier": "t_struct$_FogNode_$268_storage",
                       "typeString": "struct FogNodeManagement.FogNode storage ref"
                     }
                   },
-                  "id": 418,
+                  "id": 438,
                   "nodeType": "ExpressionStatement",
                   "src": "1326:89:2"
                 }
               ]
             },
             "functionSelector": "07889dda",
-            "id": 420,
+            "id": 440,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -9734,17 +9734,17 @@
             "nameLocation": "1185:15:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 392,
+              "id": 412,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 387,
+                  "id": 407,
                   "mutability": "mutable",
                   "name": "location",
                   "nameLocation": "1215:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 420,
+                  "scope": 440,
                   "src": "1201:22:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -9753,7 +9753,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 386,
+                    "id": 406,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1201:6:2",
@@ -9766,12 +9766,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 389,
+                  "id": 409,
                   "mutability": "mutable",
                   "name": "processingCapability",
                   "nameLocation": "1230:20:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 420,
+                  "scope": 440,
                   "src": "1225:25:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9780,7 +9780,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 388,
+                    "id": 408,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1225:4:2",
@@ -9793,12 +9793,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 391,
+                  "id": 411,
                   "mutability": "mutable",
                   "name": "rating",
                   "nameLocation": "1256:6:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 420,
+                  "scope": 440,
                   "src": "1252:10:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9807,7 +9807,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 390,
+                    "id": 410,
                     "name": "int",
                     "nodeType": "ElementaryTypeName",
                     "src": "1252:3:2",
@@ -9822,19 +9822,19 @@
               "src": "1200:63:2"
             },
             "returnParameters": {
-              "id": 393,
+              "id": 413,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1271:0:2"
             },
-            "scope": 421,
+            "scope": 441,
             "src": "1176:247:2",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 422,
+        "scope": 442,
         "src": "59:1369:2",
         "usedErrors": []
       }
@@ -9849,12 +9849,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x7EaFe6957712D9A6a130a36acfbc30B1b1B216d3",
-      "transactionHash": "0xa0ee78091f843f656c7d76481a910e0ea821f58af88ee44186ef090d5ef30511"
+      "address": "0xDaA6Ee6b7fe8a8B416781645C33C3B6d4D2AC9C7",
+      "transactionHash": "0x3edeca539dcfc2e97ea6345585d69f58c069f7b3ece06088735b54847a2bb34c"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-11-22T12:53:22.612Z",
+  "updatedAt": "2023-11-22T16:06:13.504Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

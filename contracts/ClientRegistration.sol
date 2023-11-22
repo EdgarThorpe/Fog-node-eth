@@ -24,6 +24,11 @@ contract ClientRegistration {
         clients[msg.sender].ratings += 1;
     }
 
+    function clearRegister() public {
+        registeredClients[msg.sender] = false;
+        clients[msg.sender].balance = 0;
+    }
+
     function max(uint a, uint b) private pure returns (uint) {
         return a > b ? a : b;
     }
@@ -34,8 +39,8 @@ contract ClientRegistration {
         else clients[msg.sender].balance -= max(uint(5*value), clients[msg.sender].balance);
     }
 
-    function registerClient() public payable {
-        if(registeredClients[msg.sender]) {
+    function registerClient() external payable {
+        if(!registeredClients[msg.sender]) {
             (bool success, ) = msg.sender.call{value: msg.value}("");
             require(success, "Failed to send Ether");
         }
