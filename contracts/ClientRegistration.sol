@@ -19,6 +19,10 @@ contract ClientRegistration {
         credibility = Credibility(credibilityAddress);
     }
 
+    function giveClient(address _address) public view returns (Client memory) {
+        return clients[_address];
+    }
+
     function addRatings() public {
         require(clients[msg.sender].balance > 100, "Insufficient balance.");
         clients[msg.sender].ratings += 1;
